@@ -103,14 +103,22 @@ extension BasePageCollectionCell {
     frontConstraintY.constant = isOpen == true ? -frontContainerView.bounds.size.height / 5 : 0
     backConstraintY.constant  = isOpen == true ? frontContainerView.bounds.size.height / 5 - yOffset / 2 : 0
     
+//     if let widthConstant = backContainerView.getConstraint(.width) {
+//       widthConstant.constant = isOpen == true ? frontContainerView.bounds.size.width + yOffset : frontContainerView.bounds.size.width
+//     }
+    
+//     if let heightConstant = backContainerView.getConstraint(.height) {
+//       heightConstant.constant = isOpen == true ? frontContainerView.bounds.size.height + yOffset : frontContainerView.bounds.size.height
+//     }
+
     if let widthConstant = backContainerView.getConstraint(.width) {
-      widthConstant.constant = isOpen == true ? frontContainerView.bounds.size.width + yOffset : frontContainerView.bounds.size.width
+        widthConstant.constant = isOpen == true ? frontContainerView.bounds.size.width + (yOffset-15) : frontContainerView.bounds.size.width
     }
     
     if let heightConstant = backContainerView.getConstraint(.height) {
-      heightConstant.constant = isOpen == true ? frontContainerView.bounds.size.height + yOffset : frontContainerView.bounds.size.height
+        heightConstant.constant = isOpen == true ? frontContainerView.bounds.size.height + (yOffset-50) : frontContainerView.bounds.size.height
     }
-    
+
     isOpened = isOpen
     configurationCell()
     
