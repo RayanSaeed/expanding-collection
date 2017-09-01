@@ -13,9 +13,9 @@ open class ExpandingTableViewController: UITableViewController {
   
   // MARK: Vars
   /// The height of the table view header
-  open var headerHeight: CGFloat = 236
+    open var headerHeight: CGFloat = 236
   
-  var transitionDriver: TransitionDriver?
+    var transitionDriver: TransitionDriver?
 }
 
 // MARK: Helpers 
@@ -49,17 +49,17 @@ extension ExpandingTableViewController {
   /**
    Pops the top view controller from the navigation stack and updates the display with custom animation.
    */
-  public func popTransitionAnimation() {
-    guard let transitionDriver = self.transitionDriver else {
-      return
+    public func popTransitionAnimation() {
+        guard let transitionDriver = self.transitionDriver else {
+            return
+        }
+        
+        let backImage = getScreen()
+        var offset = tableView.contentOffset.y > headerHeight ? headerHeight : tableView.contentOffset.y
+        
+        offset += getTabBarHeight()
+        
+        transitionDriver.popTransitionAnimationContantOffset(offset, backImage: backImage)
+        let _ = self.navigationController?.popViewController(animated: false)
     }
-    
-    let backImage = getScreen()
-    var offset = tableView.contentOffset.y > headerHeight ? headerHeight : tableView.contentOffset.y
-    
-    offset += getTabBarHeight()
- 
-    transitionDriver.popTransitionAnimationContantOffset(offset, backImage: backImage)
-    let _ = self.navigationController?.popViewController(animated: false)
-  }
 }
