@@ -197,14 +197,10 @@ extension BasePageCollectionCell {
     }
     
     // size shadow
-    let width  = UIScreen.main.bounds.size.height == 568 ? 150 : shadow.getConstraint(.width)?.constant
-    let height = UIScreen.main.bounds.size.height == 568 ? 262 : shadow.getConstraint(.height)?.constant
+    let width  = shadow.getConstraint(.width)?.constant
+    let height = shadow.getConstraint(.height)?.constant
     
-    if UIScreen.main.bounds.size.height == 568 {
-        shadow.layer.shadowPath = UIBezierPath(roundedRect: CGRect(x: 26, y: 0, width: width!, height: height!), cornerRadius: 0).cgPath
-    } else {
-        shadow.layer.shadowPath = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: width!, height: height!), cornerRadius: 0).cgPath
-    }
+    shadow.layer.shadowPath = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: width!, height: height!), cornerRadius: 0).cgPath
     
     return shadow
   }
