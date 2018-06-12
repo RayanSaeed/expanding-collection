@@ -1,4 +1,4 @@
-//
+ //
 //  PageConllectionCell.swift
 //  TestCollectionView
 //
@@ -178,22 +178,22 @@ extension BasePageCollectionCell {
     contentView.insertSubview(shadow, belowSubview: view)
     
     // create constraints
-    for info: (attribute: NSLayoutAttribute, scale: CGFloat)  in [(NSLayoutAttribute.width, 0.8), (NSLayoutAttribute.height, 0.9)] {
-      if let frontViewConstraint = view.getConstraint(info.attribute) {
-        shadow >>>- {
-          $0.attribute = info.attribute
-          $0.constant  = frontViewConstraint.constant * info.scale
-          return
+    for info: (attribute: NSLayoutAttribute, scale: CGFloat)  in [(NSLayoutAttribute.width, CGFloat(0.8)), (NSLayoutAttribute.height, CGFloat(0.9))] {
+        if let frontViewConstraint = view.getConstraint(info.attribute) {
+            shadow >>>- {
+                $0.attribute = info.attribute
+                $0.constant  = frontViewConstraint.constant * info.scale
+                return
+            }
         }
-      }
     }
     
-    for info: (attribute: NSLayoutAttribute, offset: CGFloat)  in [(NSLayoutAttribute.centerX, 0), (NSLayoutAttribute.centerY, 30)] {
-      (contentView, shadow, view) >>>- {
-        $0.attribute = info.attribute
-        $0.constant  = info.offset
-        return
-      }
+    for info: (attribute: NSLayoutAttribute, offset: CGFloat)  in [(NSLayoutAttribute.centerX, CGFloat(0)), (NSLayoutAttribute.centerY, CGFloat(30))] {
+        (contentView, shadow, view) >>>- {
+            $0.attribute = info.attribute
+            $0.constant  = info.offset
+            return
+        }
     }
     
     // size shadow
